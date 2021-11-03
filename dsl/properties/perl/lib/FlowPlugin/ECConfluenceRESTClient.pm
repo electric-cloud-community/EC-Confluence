@@ -1,4 +1,4 @@
-## DO NOT EDIT THIS BLOCK === rest client imports starts ===
+## DO NOT EDIT THIS BLOCK BELOW=== rest client imports starts ===
 package FlowPlugin::ECConfluenceRESTClient;
 use strict;
 use warnings;
@@ -7,9 +7,9 @@ use JSON;
 use Data::Dumper;
 use FlowPDF::Client::REST;
 use FlowPDF::Log;
-## DO NOT EDIT THIS BLOCK === rest client imports ends, checksum: 32d5b3f8fa92c89f9e29866ba13fc717 ===
+## DO NOT EDIT THIS BLOCK ABOVE ^^^=== rest client imports ends, checksum: 32d5b3f8fa92c89f9e29866ba13fc717 ===
 # Place for the custom user imports, e.g. use File::Spec
-## DO NOT EDIT THIS BLOCK === rest client starts ===
+## DO NOT EDIT THIS BLOCK BELOW=== rest client starts ===
 =head1
 
 FlowPlugin::ECConfluenceRESTClient->new('http://endpoint', {
@@ -379,19 +379,16 @@ sub createPage {
 
     logDebug "Query", $query;
 
-    # TODO handle credentials
-    # TODO Handle empty parameters
-    my $payload = {
+    my $payload = {};
 
-        'SpaceKey' => $params{ 'SpaceKey' },
+    $payload->{'SpaceKey'} = $params{'SpaceKey'};
 
-        'Title' => $params{ 'Title' },
+    $payload->{'Title'} = $params{'Title'};
 
-        'Ancestors' => $params{ 'Ancestors' },
+    $payload->{'Ancestors'} = $params{'Ancestors'};
 
-        'Content' => $params{ 'Content' },
+    $payload->{'Content'} = $params{'Content'};
 
-    };
     logDebug($payload);
 
     $payload = $self->cleanEmptyFields($payload);
@@ -403,7 +400,7 @@ sub createPage {
     my $response = $self->makeRequest('POST', $uri, $query, $payload, $headers, \%params);
     return $response;
 }
-## DO NOT EDIT THIS BLOCK === rest client ends, checksum: 79502e6894edc9fa6c7120662bb842f7 ===
+## DO NOT EDIT THIS BLOCK ABOVE ^^^=== rest client ends, checksum: d4244d4beb22bf3e66b173a238964b4c ===
 sub createPage {
     my ($self, %params) = @_;
 

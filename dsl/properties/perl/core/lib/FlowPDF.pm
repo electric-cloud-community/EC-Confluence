@@ -125,7 +125,7 @@ use FlowPDF::Log::FW;
 use FlowPDF::Exception::MissingFunctionDefinition;
 use FlowPDF::Exception::MissingFunctionArgument;
 
-our $VERSION = '1.2.4';
+our $VERSION = '1.3.5';
 
 # We need to do an autoflush for STDOUT and STDERR to not mess up output streams.
 # $| is a local variable for currently selected file descriptor.
@@ -253,7 +253,7 @@ Plugin Name            : %s
 Plugin Version         : %s
 Procedure Name         : %s
 Step Name              : %s
-CloudBees Flow version : $version
+CloudBees CD version   : $version
 FlowPDF-Perl version   : $VERSION
 
 $delimiter

@@ -68,9 +68,11 @@ This method should not be used directly without reason. ContextFactory has been 
 sub newContext {
     my ($self, $ecpdf) = @_;
 
+    my $procedureName = $self->getProcedureName();
+    my $stepName = $self->getStepName();
     my $context = FlowPDF::Context->new({
-        procedureName => $self->getProcedureName(),
-        stepName      => $self->getStepName(),
+        procedureName => $procedureName,
+        stepName      => $stepName,
         pluginObject  => $ecpdf,
         ec            => ElectricCommander->new()
     });

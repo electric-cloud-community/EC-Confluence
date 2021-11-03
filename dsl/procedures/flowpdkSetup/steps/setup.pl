@@ -70,8 +70,8 @@ sub fetchFromServer {
     my $httpProxy = $ENV{COMMANDER_HTTP_PROXY};
     if ($httpProxy && $ElectricCommander::VERSION >= 9.0000) {
         # Because prior 9.0, the proxy didn't work with rest calls
-        # $ua->proxy(https => $httpProxy);
-        # $ua->proxy(http => $httpProxy);
+        $ua->proxy(https => $httpProxy);
+        $ua->proxy(http => $httpProxy);
     }
 
     my $protocol = $ENV{COMMANDER_SECURE} ? 'https' : 'http';
@@ -223,8 +223,11 @@ sub deliverDependencies {
     my $dest = File::Spec->catfile($ENV{COMMANDER_PLUGINS}, '@PLUGIN_NAME@/agent');
 
     logInfo "Grabbed resource $resName";
+    my $ignoreCache = eval {
+        $self->ec->getPropertyValue("/projects/@PLUGIN_NAME@/__ignore_dependencies_cache");
+    };
 
-    if ($self->checkCache() || $self->isLocalResource()) {
+    if (!$ignoreCache && ($self->checkCache() || $self->isLocalResource())) {
         print "Local file cache is ok\n";
         $self->copyGrapes();
         $self->copySharedDeps();
@@ -261,7 +264,7 @@ sub deliverDependencies {
     opendir my $dh, $dest or die "Cannot open directory $dest: $!";
     my @files = grep { $_ !~ /^\./ } readdir $dh;
     unless(scalar @files) {
-        logError "No files found in the $dest directory, it is probably corrupted", "Please check the folder $source/@PLUGIN_NAME@/agent on the Flow Server filesystem. If it is empty, please reinstall the plugin.";
+        logError "No files found in the $dest directory, it is probably corrupted", "Please check the folder $source/@PLUGIN_NAME@/agent on the CloudBees CD Server filesystem. If it is empty, please reinstall the plugin.";
         die "No files found in the $dest directory. It is probably corrupted";
     }
 

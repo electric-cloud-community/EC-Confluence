@@ -2,11 +2,11 @@
 <plugin>
   <key>EC-Confluence</key>
   <label>EC-Confluence</label>
-  <author>Shaohua Wen &lt;Swen@cloudbees.com&gt;</author>
+  <author>Shaohua Wen &lt;swen@cloudbees.com&gt;</author>
   <category>Project Management</category>
   <description>Create content in Atlassian Confluence</description>
   <configure>ec_config</configure>
-  <version>0.6.0</version>
+  <version>0.6.1</version>
   <authorUrl>https://www.cloudbees.com</authorUrl>
   <help>help.xml</help>
   <depends min='1.4.1'>EC-PluginManager</depends>

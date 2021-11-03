@@ -1,6 +1,6 @@
 pluginInfo:
   pluginName: 'EC-Confluence'
-  version: '0.6.0'
+  version: '0.6.1'
   description: 'Create content in Atlassian Confluence'
   author: 'Shaohua Wen <swen@cloudbees.com>'
   supportUrl: 'https://www.cloudbees.com'

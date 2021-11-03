@@ -10,17 +10,22 @@ FlowPDF::Credential
 
 CloudBees
 
+=head1 External Credentials Support
+
+Starting from flowpdf-perl v1.3.4 external credentials in plugin configuration are supported.
+From this version, flowpdf-perl can process these credentials internally without any changes in plugin code.
+In plugin configuration, you can use as plugin credential the credential stored in a different project by choosing it in the new credential widget.
+
+External credentials are different from runtime credentials in the way of how they are referenced.
+While the usual credential has a name like 'credential' or 'proxy_credential', the external credentials name is just its path.
+For example: /YourProject/your_credental.
+Before this version, it was not possible to use external credentials in CloudBees CD.
+
 =head1 DESCRIPTION
 
-This class represents a credential of ElectricFlow.
+This class provides methods to process a CloudBees CD credential object.
 
-What is credential in ElectricFlow?
-
-In ElectricFlow credentials are special secured containers for secret values.
-
-=head1 ELECTRIC FLOW CREDENTIALS NAMING CONVENTION
-
-Credentials in electricflow should be named in 2 ways:
+Credentials should be named using one of the following patterns:
 
 =over 4
 
